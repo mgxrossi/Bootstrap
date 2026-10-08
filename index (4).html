@@ -1,0 +1,171 @@
+<!--lignes 1 a 12 la preparation-->
+<!DOCTYPE html>     <!--toute première ligne de chaque page web-->
+<html lang="fr">    <!--début de la page. Tout le reste du fichier est à l'intérieur, jusqu'à </html> tout en bas-->
+
+<!--réglages pour le navigateur, ca ne s'affiche pas-->
+<head>
+  <meta charset="UTF-8">   <!--Permet d'afficher correctement les caractères spéciaux-->
+  <!-- Indispensable pour que le site s'adapte au téléphone, C'est elle qui permet au responsive de Bootstrap de fonctionner -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Le Fournil – Boulangerie</title>
+
+  <!-- 1. On charge le CSS de Bootstrap depuis internet (CDN), une ligne suffit pour que bootstrap fonctionne -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!--lignes 16 a 38 le menu nav-->
+</head>
+<body>
+
+  <!-- balise HTML des menus de navigation. Les classes Bootstrap lui donnent son apparence-->
+  <!-- navbar-expand-lg : le menu est en ligne sur grand écran, et devient un bouton "burger" sur téléphone-->
+  <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+    <div class="container">    <!--pour centrer le contenu et laisser de l'espace sur les côtés-->
+      <a class="navbar-brand fw-bold" href="#">Le Fournil</a>  <!--<a> est un lien : on peut cliquer dessus, navbar brand c est le nom ou logo, bootstrap le met plus gros et a gauche-->
+
+      <!-- Bouton burger : Bootstrap le cache automatiquement sur grand écran, et l'affiche sur petit écran, Collapse veut dire « replier-->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+        <!--L'icône des trois traits. Elle est vide entre les balises : c'est Bootstrap qui dessine les traits grâce à la classe navbar-toggler-icon-->
+      </button>
+
+      <div class="collapse navbar-collapse" id="menu">
+        <!-- ms-auto : pousse le menu à droite -->
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#produits">Nos pains</a></li>
+          <li class="nav-item"><a class="nav-link" href="#faq">Questions</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- en tete avec le bouton jaune -->
+  <!-- py-5 : grand espace en haut et en bas / text-center : texte centré / bg-light : fond gris clair -->
+  <header class="py-5 text-center bg-light">
+    <div class="container">
+      <h1 class="display-4 fw-bold">Du pain cuit au feu de bois</h1>
+      <p class="lead mb-4">Ouvert du mardi au dimanche, de 7 h à 19 h.</p>
+      <!-- Ce bouton ouvre la fenêtre "modale", btn c'est un bouton Bootstrap, warning de couleur jaune, lg grande taille  -->
+      <button class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#horaires">
+        Voir les horaires
+      </button>
+    </div>
+  </header>
+
+  <main class="container my-5">
+
+    <!-- l'alerte verte -->
+    <div class="alert alert-success" role="alert">
+      Nouveau : le pain aux noix est disponible le samedi.
+    </div>
+
+    <!--Les cartes des pains -->
+    <!-- row = une ligne / col-12 = toute la largeur sur téléphone / col-md-4 = 4 parts sur 12 (donc 3 cartes côte à côte) à partir de la tablette -->
+    <h2 id="produits" class="mb-4">Nos pains</h2>
+    <div class="row g-4">
+      <div class="col-12 col-md-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3 class="card-title h5">Baguette tradition</h3>
+            <p class="card-text">Croûte croustillante, mie alvéolée. Pétrie à la main chaque matin.</p>
+          </div>
+          <div class="card-footer bg-transparent fw-bold">1,30 €</div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3 class="card-title h5">Pain de campagne</h3>
+            <p class="card-text">Au levain naturel, il se garde quatre à cinq jours.</p>
+          </div>
+          <div class="card-footer bg-transparent fw-bold">4,50 €</div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3 class="card-title h5">Pain aux noix</h3>
+            <p class="card-text">Farine de seigle et noix entières. Parfait avec le fromage.</p>
+          </div>
+          <div class="card-footer bg-transparent fw-bold">5,20 €</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Les questions en acordéon -->
+    <h2 id="faq" class="mt-5 mb-4">Questions fréquentes</h2>
+    <div class="accordion" id="questions">
+      <div class="accordion-item">
+        <h3 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#q1">
+            Peut-on commander à l'avance ?
+          </button>
+        </h3>
+        <div id="q1" class="accordion-collapse collapse show" data-bs-parent="#questions">
+          <div class="accordion-body">Oui, par téléphone la veille avant 18 h.</div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h3 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2">
+            Avez-vous du pain sans gluten ?
+          </button>
+        </h3>
+        <div id="q2" class="accordion-collapse collapse" data-bs-parent="#questions">
+          <div class="accordion-body">Non, notre fournil travaille uniquement avec des farines de blé et de seigle.</div>
+        </div>
+      </div>
+    </div>
+
+    <!--Le formulaire -->
+    <h2 id="contact" class="mt-5 mb-4">Nous écrire</h2>
+    <!-- col-lg-6 : le formulaire prend la moitié de la largeur sur grand écran -->
+    <div class="row">
+      <div class="col-12 col-lg-6">
+        <div class="mb-3">
+          <label for="nom" class="form-label">Votre nom</label>
+          <input type="text" class="form-control" id="nom">
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Votre e-mail</label>
+          <input type="email" class="form-control" id="email">
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Votre message</label>
+          <textarea class="form-control" id="message" rows="4"></textarea>
+        </div>
+        <button class="btn btn-dark">Envoyer le message</button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Le pied de page -->
+  <footer class="bg-dark text-white text-center py-4">
+    <p class="mb-0">Le Fournil – 12 rue des Boulangers</p>
+  </footer>
+
+  <!-- La fenetre des horaires, modale -->
+  <div class="modal fade" id="horaires" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5">Horaires d'ouverture</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+        </div>
+        <div class="modal-body">
+          <!-- table : tableau avec le style Bootstrap -->
+          <table class="table mb-0">
+            <tr><td>Lundi</td><td>Fermé</td></tr>
+            <tr><td>Mardi au samedi</td><td>7 h – 19 h</td></tr>
+            <tr><td>Dimanche</td><td>7 h – 13 h</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- le JavaScript de Bootstrap (pour le menu burger, la modale, l'accordéon) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
